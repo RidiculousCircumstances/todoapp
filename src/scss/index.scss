@@ -1,0 +1,117 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.root {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        ". header ."
+        ". input ."
+        ". list .";
+    background-color: $gray;
+    border-radius: 20px;
+    margin: 25px 10% 25px 10%;
+    padding: 0 10px 0 10px;
+
+    .header {
+        grid-area: header;
+    }
+
+    .input {
+        grid-area: input;
+        display: flex;
+        justify-content: space-between;
+     
+        * {
+            box-shadow: $shadow;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        &__field {
+            border: 0;
+        }
+
+        &__button {
+            text-align: center;
+            &:hover {
+                background-color: $green;
+            }
+        }
+    }
+
+    .list {
+        grid-area: list;
+        display: grid;
+        grid-template-columns: 200px 200px;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "chead whead"
+            "clist wlist";
+
+        margin-top: 15px;
+        margin-bottom: 10px;
+        padding-top: 5px;
+        column-gap: 200px;
+        justify-content: center;
+        background-color: $gray;
+        border-radius: 10px;
+
+        &__w {
+            grid-area: wlist;
+            @include listOnHover($green);
+        }
+
+        &__c {
+            grid-area: clist;
+            @include listOnHover($red);
+        }
+        
+        &__wh {
+            grid-area: whead;
+        }
+
+        &__ch {
+            grid-area: chead;
+        }
+
+    }
+
+}
+
+@media (max-width: 765px) {
+    .root {
+        .list {
+            grid-template-columns: auto auto;
+            column-gap: 20vw;
+        }
+    }
+
+}
+
+
+@media (max-width: 390px) {
+    .root {
+
+        margin: 0 0 0 0;
+        .list {
+            column-gap: 5   vw;
+        }
+
+        .input {
+            display: block;
+            * {
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+            &__button {
+                width: 50px;
+            }
+        }
+    }
+
+}
+

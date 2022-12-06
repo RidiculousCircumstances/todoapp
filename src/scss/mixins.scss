@@ -1,0 +1,7 @@
+@mixin listOnHover ($color) {
+    li {
+        &:hover {
+            color: $color;
+        }
+    }
+}
